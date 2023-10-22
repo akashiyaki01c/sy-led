@@ -14,6 +14,7 @@
 		<div style="height: 100%; width: calc(12px * 5); background-color: black;"></div>
 		<div id="dest-led"></div>
 	</div>
+	<div id="test-maku"></div>
 	<fieldset>
 		<legend>線区モード</legend>
 		<div><input type="radio" name="radio-senku" id="radio-seishin" value="0" checked><label for="">西神・山手、北神線</label></div>
@@ -22,33 +23,12 @@
 	<div><label for="">運行番号</label><select name="select-number1" id="select-number1"></select><select name="select-number2" id="select-number2"></select></div>
 	<div><label for="">行先</label><select name="select-dest" id="select-dest"></select></div>
 	<script src="lib/led.js"></script>
+	<script src="draw.js"></script>
 	<script>
-		async function drawSelectSeishin() {
-			const data = await (await fetch("data/dest.json")).json();
-			let str = data.seishin.map(v => `<option value="${v.x},${v.y}" ${v.disabled === true ? "disabled" : ""}>${v.name}</option>`).join("\n");			
-			document.querySelector("#select-dest").innerHTML = str;
-		}
-		async function drawSelectKaigan() {
-			const data = await (await fetch("data/dest.json")).json();
-			let str = data.kaigan.map(v => `<option value="${v.x},${v.y}" ${v.disabled === true ? "disabled" : ""}>${v.name}</option>`).join("\n");			
-			document.querySelector("#select-dest").innerHTML = str;
-		}
-
-		(async () => {
-			const data = ["_", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-			let str = data.map((v, i) => `<option value="${i}">${v}</option>`).join("\n");
-			document.querySelector("#select-number1").innerHTML = str;
-			document.querySelector("#select-number2").innerHTML = str;
-		})();
-
-		drawSelectSeishin();
-		
-
 		const SCALE = 5;
         const destLed = new LedDisplay("dest-led", "./rect414.png", 96, 32, 0, 0, SCALE);
 		const number1Led = new LedDisplay("number1-led", "./rect414.png", 12, 32, 288, 0, SCALE);
 		const number2Led = new LedDisplay("number2-led", "./rect414.png", 12, 32, 288, 0, SCALE);
-
 		const destOnchange = () => {
 			let value = document.getElementById("select-dest").value.split(",");
 			destLed.update(value[0], value[1]);
@@ -72,15 +52,12 @@
 			const line = document.getElementById("radio-seishin").checked === true ? 0 : 1;
 			if (line === 0) {
 				drawSelectSeishin();
-				destOnchange();
-				n1Onchange();
-				n2Onchange();
 			} else if (line === 1) {
 				drawSelectKaigan();
-				destOnchange();
-				n1Onchange();
-				n2Onchange();
 			}
+			destOnchange();
+			n1Onchange();
+			n2Onchange();
 			destLed.update(0, 0);
 		}
 

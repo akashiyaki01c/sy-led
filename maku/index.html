@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="../lib/led.css">
+</head>
+<body>
+	<div id="maku"></div>
+	<div><label for="">行先</label><select name="select-dest" id="select-dest"></select></div>
+
+	<script src="../lib/led.js"></script>
+	<script>
+		const maku = new MakuDisplay("maku", "./maku.png", 320, 100, 0, 0, 0, 80, 1, 100);
+		const destOnchange = () => {
+			let value = document.getElementById("select-dest").value;
+			document.getElementById("select-dest").disabled = true;
+			maku.update(value, () => {
+				document.getElementById("select-dest").disabled = false;
+			});
+		};
+		document.getElementById("select-dest").onchange = destOnchange;
+		(async () => {
+			const data = await (await fetch("data.json")).json();
+			let str = data.data.map(v => `<option value="${v.index}">${v.name}</option>`).join("\n");			
+			document.querySelector("#select-dest").innerHTML = str;
+		})();
+	</script>
+</body>
+</html>

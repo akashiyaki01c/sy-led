@@ -1,14 +1,14 @@
 
-.led-root {
+.led-root, .maku-root {
     display: inline-block;
 }
 
-.led-outer {
+.led-outer, .maku-outer {
     display: inline-block;
     position: relative;
     overflow: hidden;
 }
-.led-inner {
+.led-inner, .maku-inner {
     position: absolute;
     transform-origin: top left;
 }
