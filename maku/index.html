@@ -14,12 +14,24 @@
 	<script src="../lib/led.js"></script>
 	<script>
 		const maku = new MakuDisplay("maku", "./maku.png", 320, 100, 0, 0, 0, 80, 1, 100);
+		let nowIndex = 0;
+
 		const destOnchange = () => {
-			let value = document.getElementById("select-dest").value;
+			let value = Number.parseInt(document.getElementById("select-dest").value);
 			document.getElementById("select-dest").disabled = true;
-			maku.update(value, () => {
-				document.getElementById("select-dest").disabled = false;
-			});
+			if (nowIndex > value) {
+				maku.update(nowIndex+1, () => {
+					maku.update(value, () => {
+						document.getElementById("select-dest").disabled = false;
+						nowIndex = value;
+					});
+				});
+			} else {
+				maku.update(value, () => {
+					document.getElementById("select-dest").disabled = false;
+					nowIndex = value;
+				});
+			}
 		};
 		document.getElementById("select-dest").onchange = destOnchange;
 		(async () => {
