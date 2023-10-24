@@ -28,8 +28,8 @@
      inkscape:document-units="px"
      showgrid="true"
      inkscape:zoom="0.69556072"
-     inkscape:cx="106.38899"
-     inkscape:cy="115.73397"
+     inkscape:cx="105.67014"
+     inkscape:cy="141.61237"
      inkscape:window-width="1387"
      inkscape:window-height="847"
      inkscape:window-x="53"
@@ -107,6 +107,17 @@
        y="68.791664"
        ry="1.1881455e-06"
        inkscape:export-filename="maku/1000light.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#000000;stroke-width:0.529167"
+       id="rect465-7"
+       width="84.666664"
+       height="26.458334"
+       x="0"
+       y="105.83333"
+       ry="1.1881455e-06"
+       inkscape:export-filename="maku/1000nolight.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <rect
