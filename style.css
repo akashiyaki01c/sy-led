@@ -1,0 +1,56 @@
+.front-led-outer {
+	display: flex;
+	justify-content: center;
+}
+
+.front-led {
+	display: flex; 
+	height: calc(32px * 5); 
+	width: 800px;
+	border-top: 20px solid black;
+	border-bottom: 20px solid black;
+	background-color: black;
+	justify-content: center;
+
+	> div {
+		flex: none;
+	}
+}
+
+/* .front-led-space {
+	height: 100%;
+	width: calc(12px * 5);
+	background-color: black;
+} */
+
+.side-led-outer {
+	display: flex;
+	justify-content: center;
+}
+
+.side-led {
+	margin-top: 10px;
+	position: relative;
+	background-size: contain;
+	width: 800px;
+	height: 320px;
+}
+.side-led>div {
+	position: absolute;
+	top: 80px;
+	left: 160px;
+}
+.side-led.type6000 {
+	background-image: url(./6000Side.png);
+}
+.side-led.type5000 {
+	background-image: url(./5000Side.png);
+}
+
+.led-inner::after {
+	background-color: #fff2;
+	content: '';
+	display: block;
+	width: 100%;
+	height: 100%;
+}
