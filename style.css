@@ -1,3 +1,8 @@
+:root {
+	--seishin-color: #008F4B;
+	--kaigan-color: #0072BA;
+}
+
 .front-led-outer {
 	display: flex;
 	justify-content: center;
@@ -55,4 +60,81 @@
 	display: block;
 	width: 100%;
 	height: 100%;
+}
+
+/* header */
+body {
+	margin: 0;
+	padding: 0;
+}
+header {
+	width: 100%;
+	height: fit-content;
+	margin: 0;
+	padding: 0;
+}
+header>h1 {
+	width: 100%;
+	height: fit-content;
+	margin: 20px 0;
+	padding: 5px 0;
+
+	text-align: center;
+	border-top: 2px solid var(--seishin-color);
+	border-bottom: 2px solid var(--seishin-color);
+
+	background-color: #fff2;
+}
+
+.changer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#line-changer {
+	width: 20em;
+}
+#dest-changer {
+	width: 20em;
+}
+
+.line-select {
+	display: flex;
+	height: fit-content;
+}
+.line-s-before {
+	display: block;
+	width: 0.5em;
+	min-height: 100%;
+	background-color: var(--seishin-color);
+}
+.line-s {
+	color: var(--seishin-color);
+}
+
+.line-k-before {
+	display: block;
+	width: 0.5em;
+	min-height: 100%;
+	background-color: var(--kaigan-color);
+}
+.line-k {
+	color: var(--kaigan-color);
+}
+
+#radio-seishin {
+	accent-color: var(--seishin-color);
+}
+#radio-kaigan {
+	accent-color: var(--kaigan-color);
+}
+
+#select-dest {
+	width: calc(100% - 3em);
+}
+
+footer > div {
+	font-size: smaller;
+	text-align: center;
 }
