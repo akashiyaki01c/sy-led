@@ -7,82 +7,42 @@
 	<link rel="stylesheet" href="lib/led.css">
 	<link rel="stylesheet" href="style.css">
 	<meta name="robots" content="noindex">
+	<link rel="preload" href="./5000LED.png" as="image">
+	<link rel="preload" href="./5000Side.png" as="image">
+	<link rel="preload" href="./6000LED.png" as="image">
+	<link rel="preload" href="./6000Side.png" as="image">
 </head>
 <body>
-	<div class="front-led-outer">
-		<div class="front-led">
-			<div id="number1-led"></div>
-			<div id="number2-led"></div>
-			<div id="front-led-space"></div>
-			<div id="dest-led"></div>
+	<main>
+		<div class="front-led-outer">
+			<div class="front-led">
+				<div id="number1-led"></div>
+				<div id="number2-led"></div>
+				<div id="front-led-space"></div>
+				<div id="dest-led"></div>
+			</div>
 		</div>
-	</div>
-	<div class="side-led-outer">
-		<div class="side-led type6000">
-			<div id="dest-led-side"></div>
+		<div class="side-led-outer">
+			<div class="side-led type6000">
+				<div id="dest-led-side"></div>
+			</div>
 		</div>
-	</div>
-	<div id="test-maku"></div>
-	<fieldset>
+	</main>
+	<fieldset id="line-changer">
 		<legend>線区モード</legend>
-		<div><input type="radio" name="radio-senku" id="radio-seishin" value="0" checked><label for="">西神・山手、北神線</label></div>
-		<div><input type="radio" name="radio-senku" id="radio-kaigan" value="1"><label for="">海岸線</label></div>
+		<div><input type="radio" name="radio-senku" id="radio-seishin" value="0" checked><label for="radio-seishin">西神・山手、北神線</label></div>
+		<div><input type="radio" name="radio-senku" id="radio-kaigan" value="1"><label for="radio-kaigan">海岸線</label></div>
 	</fieldset>
-	<div><label for="">運行番号</label><select name="select-number1" id="select-number1"></select><select name="select-number2" id="select-number2"></select></div>
-	<div><label for="">行先</label><select name="select-dest" id="select-dest"></select></div>
+	<div>
+		<label for="select-number1">運行番号</label><select name="select-number1" id="select-number1"></select>
+		<select name="select-number2" id="select-number2"></select>
+	</div>
+	<div>
+		<label for="select-dest">行先</label>
+		<select name="select-dest" id="select-dest"></select>
+	</div>
 	<script src="lib/led.js"></script>
 	<script src="draw.js"></script>
-	<script>
-		const SCALE = 5;
-		const number1Led = new LedDisplay("number1-led", "./6000LED.png", 12, 32, 0, 0, SCALE);
-		const number2Led = new LedDisplay("number2-led", "./6000LED.png", 12, 32, 0, 0, SCALE);
-		const _spaceLed = new LedDisplay("front-led-space", "./6000LED.png", 8, 32, 0, 0, SCALE);
-        const destLed = new LedDisplay("dest-led", "./6000LED.png", 96, 32, 12, 0, SCALE);
-
-		const destSideLed = new LedDisplay("dest-led-side", "./6000LED.png", 96, 32, 12, 0, SCALE);
-
-		const destOnchange = () => {
-			let value = document.getElementById("select-dest").value.split(",");
-			destLed.update(value[0], value[1]);
-			destSideLed.update(value[0], value[1]);
-		};
-		const n1Onchange = () => {
-			let value = document.getElementById("select-number1").value;
-			number1Led.update(0, value);
-		}
-		const n2Onchange = () => {
-			let value = document.getElementById("select-number2").value;
-			number2Led.update(0, value);
-		}
-		document.getElementById("select-dest").onchange = destOnchange;
-		document.getElementById("select-number1").onchange = n1Onchange;
-		document.getElementById("select-number2").onchange = n2Onchange;
-		document.querySelector("fieldset").onchange = () => {
-			const line = document.getElementById("radio-seishin").checked === true ? 0 : 1;
-			if (line === 0) {
-				drawSelectSeishin();
-				document.querySelector(".side-led").classList.remove("type5000");
-				document.querySelector(".side-led").classList.add("type6000");
-				number1Led.changeImage("./6000LED.png");
-				number2Led.changeImage("./6000LED.png");
-				destLed.changeImage("./6000LED.png");
-				destSideLed.changeImage("./6000LED.png");
-			} else if (line === 1) {
-				drawSelectKaigan();
-				document.querySelector(".side-led").classList.remove("type6000");
-				document.querySelector(".side-led").classList.add("type5000");
-				number1Led.changeImage("./5000LED.png");
-				number2Led.changeImage("./5000LED.png");
-				destLed.changeImage("./5000LED.png");
-				destSideLed.changeImage("./5000LED.png");
-			}
-			destOnchange();
-			n1Onchange();
-			n2Onchange();
-			destSideLed.update(0, 0);
-			destLed.update(0, 0);
-		}
-
-	</script>
+	<script src="script.js"></script>
 </body>
 </html>

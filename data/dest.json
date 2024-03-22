@@ -126,10 +126,10 @@
 		{"name": "ティバル", "x": 5, "y": 4},
 		{"name": "2023", "x": 5, "y": 5},
 			{"hr": true},
-		{"name": "快速 西神中央", "x": 5, "y": 7, "nonExist": true},
-		{"name": "快速 学園都市", "x": 5, "y": 8, "nonExist": true},
-		{"name": "快速 名谷", "x": 5, "y": 9, "nonExist": true},
-		{"name": "快速 新神戸", "x": 5, "y": 10, "nonExist": true},
+		{"name": "快速 西神中央", "x": 5, "y": 11, "sideX": 5, "sideY": 7, "nonExist": true, "diff": true},
+		{"name": "快速 学園都市", "x": 5, "y": 12, "sideX": 5, "sideY": 8, "nonExist": true, "diff": true},
+		{"name": "快速 名谷", "x": 5, "y": 13, "sideX": 5, "sideY": 9, "nonExist": true, "diff": true},
+		{"name": "快速 新神戸", "x": 5, "y": 14, "sideX": 5, "sideY": 10, "nonExist": true, "diff": true},
 			{"neverDisplay": true}
 	]
 }
