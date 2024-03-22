@@ -1,11 +1,31 @@
+const _select = (v) => {
+	const visibleNonExist = true;
+
+	if (v.neverDisplay) {
+		return;
+	}
+	if (v.hr) {
+		return `<hr>`
+	}
+	if (v.nonExist && visibleNonExist) {
+		return `<option value="${v.x},${v.y}">${v.name}</option>`
+	}
+	if (!v.disabled) {
+		return `<option value="${v.x},${v.y}">${v.name}</option>`
+	} else {
+		return `<option value="${v.x},${v.y}" disabled>${v.name}</option>`
+	}
+};
+
 async function drawSelectSeishin() {
 	const data = await (await fetch("data/dest.json")).json();
-	let str = data.seishin.map(v => `<option value="${v.x},${v.y}" ${v.disabled === true ? "disabled" : ""}>${v.name}</option>`).join("\n");			
+
+	let str = data.seishin.map(_select).join("\n");			
 	document.querySelector("#select-dest").innerHTML = str;
 }
 async function drawSelectKaigan() {
 	const data = await (await fetch("data/dest.json")).json();
-	let str = data.kaigan.map(v => `<option value="${v.x},${v.y}" ${v.disabled === true ? "disabled" : ""}>${v.name}</option>`).join("\n");			
+	let str = data.kaigan.map(_select).join("\n");			
 	document.querySelector("#select-dest").innerHTML = str;
 }
 (async () => {

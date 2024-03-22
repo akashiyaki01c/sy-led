@@ -36,7 +36,7 @@
 		const SCALE = 5;
 		const number1Led = new LedDisplay("number1-led", "./6000LED.png", 12, 32, 0, 0, SCALE);
 		const number2Led = new LedDisplay("number2-led", "./6000LED.png", 12, 32, 0, 0, SCALE);
-		const _spaceLed = new LedDisplay("front-led-space", "./6000LED.png", 12, 32, 0, 0, SCALE);
+		const _spaceLed = new LedDisplay("front-led-space", "./6000LED.png", 8, 32, 0, 0, SCALE);
         const destLed = new LedDisplay("dest-led", "./6000LED.png", 96, 32, 12, 0, SCALE);
 
 		const destSideLed = new LedDisplay("dest-led-side", "./6000LED.png", 96, 32, 12, 0, SCALE);
@@ -49,12 +49,10 @@
 		const n1Onchange = () => {
 			let value = document.getElementById("select-number1").value;
 			number1Led.update(0, value);
-			console.log(value, line);
 		}
 		const n2Onchange = () => {
 			let value = document.getElementById("select-number2").value;
 			number2Led.update(0, value);
-			console.log(value, line);
 		}
 		document.getElementById("select-dest").onchange = destOnchange;
 		document.getElementById("select-number1").onchange = n1Onchange;

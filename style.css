@@ -32,8 +32,10 @@
 	margin-top: 10px;
 	position: relative;
 	background-size: contain;
+	min-width: 800px;
 	width: 800px;
 	height: 320px;
+	image-rendering: pixelated;
 }
 .side-led>div {
 	position: absolute;
