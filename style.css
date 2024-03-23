@@ -3,6 +3,10 @@
 	--kaigan-color: #0072BA;
 }
 
+main {
+	min-width: 800px;
+}
+
 .front-led-outer {
 	display: flex;
 	justify-content: center;
