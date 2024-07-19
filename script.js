@@ -1,9 +1,9 @@
 const SCALE = 5;
-const number1Led = new LedDisplay("number1-led", "./6000LED.png", 12, 32, 0, 0, SCALE);
-const number2Led = new LedDisplay("number2-led", "./6000LED.png", 12, 32, 0, 0, SCALE);
-/* const _spaceLed = */ new LedDisplay("front-led-space", "./6000LED.png", 8, 32, 0, 0, SCALE);
-const destLed = new LedDisplay("dest-led", "./6000LED.png", 96, 32, 12, 0, SCALE);
-const destSideLed = new LedDisplay("dest-led-side", "./6000LED.png", 96, 32, 12, 0, SCALE);
+const number1Led = new LedDisplay("number1-led", "./6000LED.png", 12, 32, 4, 4, 4, 4, SCALE);
+const number2Led = new LedDisplay("number2-led", "./6000LED.png", 12, 32, 4, 4, 4, 4, SCALE);
+/* const _spaceLed = */ new LedDisplay("front-led-space", "./6000LED.png", 8, 32, 4, 4, 4, 4, SCALE);
+const destLed = new LedDisplay("dest-led", "./6000LED.png", 96, 32, 20, 4, 4, 4, SCALE);
+const destSideLed = new LedDisplay("dest-led-side", "./6000LED.png", 96, 32, 20, 4, 4, 4, SCALE);
 
 const destOnchange = () => {
 	const rawValue = String(document.querySelector("#select-dest").value);
@@ -34,14 +34,16 @@ document.querySelector("#line-changer").onchange = () => {
 		drawSelectSeishin();
 		document.querySelector(".side-led").classList.remove("type5000");
 		document.querySelector(".side-led").classList.add("type6000");
-		[number1Led, number2Led, destLed, destSideLed]
-			.forEach(v => v.changeImage("./6000LED.png"));
+		for (const led of [number1Led, number2Led, destLed, destSideLed]) {
+			led.offsetY = 4;
+		}
 	} else if (line === 1) {
 		drawSelectKaigan();
 		document.querySelector(".side-led").classList.remove("type6000");
 		document.querySelector(".side-led").classList.add("type5000");
-		[number1Led, number2Led, destLed, destSideLed]
-			.forEach(v => v.changeImage("./5000LED.png"));
+		for (const led of [number1Led, number2Led, destLed, destSideLed]) {
+			led.offsetY = 724;
+		}
 	}
 	destOnchange();
 	n1Onchange();
